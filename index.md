@@ -1,37 +1,52 @@
 ## Bienvenidos a mi página!
 
-You can use the [editor on GitHub](https://github.com/jjcuello/jjcuello.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Está página web en github es una pequeña parte del proceso de aprendizaje para uno de mis hobby de toda mi vida: la informática. Gracias a mi mentor en el área: @gomix he ido aprendiendo de a poco temas de software libre, servidores y más.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Los invitó a pasearse por estás breves lineas y compartir.
 
-### Markdown
+### Código
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+El objetivo primordial es compartir las pequeñas experienzas con los diferentes códigos para ayudar a que otros tambíen aprendan:
 
-```markdown
-Syntax highlighted code block
+```Código
+# Ejemplo de my primer playbook en ansible
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+---
+- name: instalar openvpn 
+  hosts: virtual
+  user: jcuello
+  become: yes
+  become_method: su
+  tasks:
+    - name: install epel-release
+      yum: name=epel-release state=latest
+    - name: upgrade all packages
+      yum: name=* state=latest
+    - name: install openvpn
+      yum: name=openvpn state=latest
+    - name: download easyrsa 
+      get_url:
+        url: https://github.com/OpenVPN/easy-rsa-old/archive/2.3.3.tar.gz
+        dest: /tmp/easyrsa
+    - name: create directory
+      file:
+        path: /etc/openvpn/easy-rsa
+        state: directory
+    - name: extract easyrsa
+      unarchive:
+        src: /tmp/easyrsa
+        dest: /etc/openvpn/easy-rsa
+        remote_src: yes
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Para más detalles de cómo podemos adentrarnos en esté fascinante mundo te recomiendo visitar: http://redmine.cautivatech.com/redmine/projects/knowledge-base/wiki/Knowledge_Base_Wiki
 
-### Jekyll Themes
+Ajedrez
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jjcuello/jjcuello.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+No podría dejar pasar por alto mi gran pasión y la disciplina a la cual le dedico mi vida profesional. Los invitó a solucionar el problema del día:
 
-### Support or Contact
+<script src="https://lichess.org/training/embed?theme=auto&bg=auto"></script>
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Información de contácto:
+
+jcuello@anaj.org.ve
